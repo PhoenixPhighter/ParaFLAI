@@ -1,0 +1,8 @@
+Universe = vanilla
+
+Executable = product.py
+Input = inputA.npy, inputB.npy
+Output = output.npy
+Log = log.txt
+
+Queue 10

@@ -1,0 +1,12 @@
+Universe = vanilla
+
+getenv = true
+Executable = test_condor.py
++Group = "UNDER"
++Project = "OPERATING_DISTRIBUTED_SYSTEMS"
++ProjectDescription = "testing condor functionality"
+Output = output.$(Process)
+Log = condor.log
+
+Notification = Complete
+Queue 5

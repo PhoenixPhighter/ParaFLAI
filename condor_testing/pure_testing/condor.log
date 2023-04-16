@@ -1,0 +1,285 @@
+000 (9196594.000.000) 2023-04-15 11:08:29 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9196594.001.000) 2023-04-15 11:08:29 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9196594.002.000) 2023-04-15 11:08:29 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9196594.003.000) 2023-04-15 11:08:29 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9196594.004.000) 2023-04-15 11:08:29 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+001 (9196594.000.000) 2023-04-15 11:08:44 Job executing on host: <128.83.144.22:9618?addrs=128.83.144.22-9618&alias=orcrist-36.cs.utexas.edu&noUDP&sock=startd_1397_cde5>
+...
+007 (9196594.000.000) 2023-04-15 11:08:44 Shadow exception!
+	Error from slot1@orcrist-36.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+001 (9196594.004.000) 2023-04-15 11:08:44 Job executing on host: <128.83.130.70:9618?addrs=128.83.130.70-9618&alias=orcrist-13.cs.utexas.edu&noUDP&sock=startd_1313_2ff0>
+...
+007 (9196594.004.000) 2023-04-15 11:08:44 Shadow exception!
+	Error from slot8@orcrist-13.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+001 (9196594.001.000) 2023-04-15 11:08:44 Job executing on host: <128.83.120.228:9618?addrs=128.83.120.228-9618&alias=glamdring-1.cs.utexas.edu&noUDP&sock=startd_1610_e791>
+...
+007 (9196594.001.000) 2023-04-15 11:08:44 Shadow exception!
+	Error from slot17@glamdring-1.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+001 (9196594.002.000) 2023-04-15 11:08:44 Job executing on host: <128.83.144.13:9618?addrs=128.83.144.13-9618&alias=glamdring-8.cs.utexas.edu&noUDP&sock=startd_1626_e115>
+...
+007 (9196594.002.000) 2023-04-15 11:08:44 Shadow exception!
+	Error from slot36@glamdring-8.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+001 (9196594.003.000) 2023-04-15 11:08:44 Job executing on host: <128.83.120.231:9618?addrs=128.83.120.231-9618&alias=glamdring-4.cs.utexas.edu&noUDP&sock=startd_1598_ac6e>
+...
+007 (9196594.003.000) 2023-04-15 11:08:44 Shadow exception!
+	Error from slot21@glamdring-4.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+012 (9196594.000.000) 2023-04-15 11:08:44 Job was held.
+	Error from slot1@orcrist-36.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+012 (9196594.004.000) 2023-04-15 11:08:44 Job was held.
+	Error from slot8@orcrist-13.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+012 (9196594.001.000) 2023-04-15 11:08:44 Job was held.
+	Error from slot17@glamdring-1.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+012 (9196594.002.000) 2023-04-15 11:08:44 Job was held.
+	Error from slot36@glamdring-8.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+012 (9196594.003.000) 2023-04-15 11:08:44 Job was held.
+	Error from slot21@glamdring-4.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+009 (9196594.000.000) 2023-04-15 11:15:58 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+009 (9196594.001.000) 2023-04-15 11:15:58 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+009 (9196594.002.000) 2023-04-15 11:15:58 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+009 (9196594.003.000) 2023-04-15 11:15:58 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+009 (9196594.004.000) 2023-04-15 11:15:58 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+000 (9197540.000.000) 2023-04-15 14:38:15 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9197540.001.000) 2023-04-15 14:38:15 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9197540.002.000) 2023-04-15 14:38:15 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9197540.003.000) 2023-04-15 14:38:15 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9197540.004.000) 2023-04-15 14:38:15 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+001 (9197540.000.000) 2023-04-15 14:38:52 Job executing on host: <128.83.139.232:9618?addrs=128.83.139.232-9618&alias=rhavan-16.cs.utexas.edu&noUDP&sock=startd_1180_f5d8>
+...
+007 (9197540.000.000) 2023-04-15 14:38:52 Shadow exception!
+	Error from slot1@rhavan-16.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+001 (9197540.001.000) 2023-04-15 14:38:52 Job executing on host: <128.83.130.63:9618?addrs=128.83.130.63-9618&alias=orcrist-6.cs.utexas.edu&noUDP&sock=startd_1298_e604>
+...
+007 (9197540.001.000) 2023-04-15 14:38:52 Shadow exception!
+	Error from slot13@orcrist-6.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+001 (9197540.002.000) 2023-04-15 14:38:52 Job executing on host: <128.83.144.112:9618?addrs=128.83.144.112-9618&alias=glamdring-10.cs.utexas.edu&noUDP&sock=startd_1636_bd07>
+...
+001 (9197540.003.000) 2023-04-15 14:38:52 Job executing on host: <128.83.139.144:9618?addrs=128.83.139.144-9618&alias=angrist-17.cs.utexas.edu&noUDP&sock=startd_1590_2fac>
+...
+012 (9197540.000.000) 2023-04-15 14:38:52 Job was held.
+	Error from slot1@rhavan-16.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+007 (9197540.002.000) 2023-04-15 14:38:52 Shadow exception!
+	Error from slot15@glamdring-10.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+007 (9197540.003.000) 2023-04-15 14:38:52 Shadow exception!
+	Error from slot11@angrist-17.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+012 (9197540.001.000) 2023-04-15 14:38:52 Job was held.
+	Error from slot13@orcrist-6.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+012 (9197540.002.000) 2023-04-15 14:38:52 Job was held.
+	Error from slot15@glamdring-10.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+012 (9197540.003.000) 2023-04-15 14:38:52 Job was held.
+	Error from slot11@angrist-17.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+001 (9197540.004.000) 2023-04-15 14:38:52 Job executing on host: <128.83.139.14:9618?addrs=128.83.139.14-9618&alias=glamdring-13.cs.utexas.edu&noUDP&sock=startd_1658_d41d>
+...
+007 (9197540.004.000) 2023-04-15 14:38:52 Shadow exception!
+	Error from slot20@glamdring-13.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+012 (9197540.004.000) 2023-04-15 14:38:52 Job was held.
+	Error from slot20@glamdring-13.cs.utexas.edu: Failed to execute '/u/sarveshs/cs378h/ParaFLAI/condor_testing/test_condor.py': (errno=13: 'Permission denied')
+	Code 6 Subcode 13
+...
+009 (9197540.000.000) 2023-04-15 14:40:15 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+009 (9197540.001.000) 2023-04-15 14:40:15 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+009 (9197540.002.000) 2023-04-15 14:40:15 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+009 (9197540.003.000) 2023-04-15 14:40:15 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+009 (9197540.004.000) 2023-04-15 14:40:15 Job was aborted.
+	via condor_rm (by user sarveshs)
+...
+000 (9197541.000.000) 2023-04-15 14:46:12 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9197541.001.000) 2023-04-15 14:46:12 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9197541.002.000) 2023-04-15 14:46:12 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9197541.003.000) 2023-04-15 14:46:12 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+000 (9197541.004.000) 2023-04-15 14:46:12 Job submitted from host: <128.83.120.183:9618?addrs=128.83.120.183-9618&alias=darmok.cs.utexas.edu&noUDP&sock=schedd_1339_0567>
+...
+001 (9197541.003.000) 2023-04-15 14:46:26 Job executing on host: <128.83.144.240:9618?addrs=128.83.144.240-9618&alias=angrist-13.cs.utexas.edu&noUDP&sock=startd_1563_aa9d>
+...
+001 (9197541.001.000) 2023-04-15 14:46:26 Job executing on host: <128.83.139.213:9618?addrs=128.83.139.213-9618&alias=rhavan-35.cs.utexas.edu&noUDP&sock=startd_1212_e8df>
+...
+001 (9197541.002.000) 2023-04-15 14:46:27 Job executing on host: <128.83.144.38:9618?addrs=128.83.144.38-9618&alias=nauro-14.cs.utexas.edu&noUDP&sock=startd_1215_f7a8>
+...
+001 (9197541.000.000) 2023-04-15 14:46:27 Job executing on host: <128.83.120.229:9618?addrs=128.83.120.229-9618&alias=glamdring-2.cs.utexas.edu&noUDP&sock=startd_1599_5c06>
+...
+001 (9197541.004.000) 2023-04-15 14:46:27 Job executing on host: <128.83.130.203:9618?addrs=128.83.130.203-9618&alias=uvanimor-16.cs.utexas.edu&noUDP&sock=startd_1179_463f>
+...
+006 (9197541.002.000) 2023-04-15 14:46:27 Image size of job updated: 1
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+005 (9197541.002.000) 2023-04-15 14:46:27 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :        1        1   4946769 
+	   Memory (MB)          :        0        1      4025 
+
+	Job terminated of its own accord at 2023-04-15T19:46:27Z.
+...
+006 (9197541.004.000) 2023-04-15 14:46:27 Image size of job updated: 1
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (9197541.003.000) 2023-04-15 14:46:27 Image size of job updated: 1
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+005 (9197541.004.000) 2023-04-15 14:46:27 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :        1        1   2473385 
+	   Memory (MB)          :        0        1      4020 
+
+	Job terminated of its own accord at 2023-04-15T19:46:27Z.
+...
+006 (9197541.000.000) 2023-04-15 14:46:27 Image size of job updated: 1
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+006 (9197541.001.000) 2023-04-15 14:46:27 Image size of job updated: 1
+	0  -  MemoryUsage of job (MB)
+	0  -  ResidentSetSize of job (KB)
+...
+005 (9197541.003.000) 2023-04-15 14:46:27 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :        1        1  15233519 
+	   Memory (MB)          :        0        1      4027 
+
+	Job terminated of its own accord at 2023-04-15T19:46:27Z.
+...
+005 (9197541.000.000) 2023-04-15 14:46:27 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :        1        1   8092049 
+	   Memory (MB)          :        0        1     12899 
+
+	Job terminated of its own accord at 2023-04-15T19:46:27Z.
+...
+005 (9197541.001.000) 2023-04-15 14:46:27 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :        1        1   2849120 
+	   Memory (MB)          :        0        1      4020 
+
+	Job terminated of its own accord at 2023-04-15T19:46:27Z.
+...

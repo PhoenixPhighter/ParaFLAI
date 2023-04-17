@@ -8,6 +8,7 @@ import flwr as fl
 import numpy as np
 import torch
 import torchvision
+from pathlib import Path
 
 import cifar
 
@@ -92,7 +93,7 @@ def main() -> None:
 
     # Start client
     client = CifarClient(model, trainloader, testloader, num_examples)
-    fl.client.start_numpy_client(server_address="127.0.0.1:8080", client=client)
+    fl.client.start_numpy_client(server_address="66.241.125.156:80", client=client, root_certificates=Path(".cache/certificates/ca.crt").read_bytes(),)
 
 
 if __name__ == "__main__":

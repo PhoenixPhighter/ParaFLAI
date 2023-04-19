@@ -25,7 +25,7 @@ def load_data():
 def load_partition(idx: int, total: int):
     assert idx in range(total)
     trainset, testset, num_examples = load_data()
-    n_train = int(num_examples["trainset"] / (total * 50))
+    n_train = int(num_examples["trainset"] / total)
     print(f"train size {n_train}")
     n_test = int(num_examples["testset"] / total)
 

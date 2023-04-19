@@ -50,7 +50,7 @@ def get_evaluate_fn(model: torch.nn.Module):
     def evaluate(
         server_round: int,
         parameters: fl.common.NDArrays,
-        config: Dict[str, fl.common.Scalar],
+        cog: Dict[str, fl.common.Scalar],
     ) -> Optional[Tuple[float, Dict[str, fl.common.Scalar]]]:
         # Update model with the latest parameters
         print('start eval')
@@ -98,7 +98,7 @@ def main():
     # Start Flower server for four rounds of federated learning
     fl.server.start_server(
         server_address="0.0.0.0:8080",
-        config=fl.server.ServerConfig(num_rounds=4),
+        config=fl.server.ServerConfig(num_rounds=10),
         strategy=strategy,
     )
 

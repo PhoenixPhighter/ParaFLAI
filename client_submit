@@ -1,0 +1,15 @@
+Universe = vanilla
+
+getenv = true
+Executable = client.py
+Arguments = --ip 34.66.196.174 --ncli 15 --id $(Process)
++GPUJob = true
+requirements = (TARGET.GPUSlot)
++Group = "UNDER"
++Project = "OPERATING_DISTRIBUTED_SYSTEMS"
++ProjectDescription = "Federated learning on edge device"
+Output = output.$(Process)
+Log = condor.log
+
+Notification = Complete
+Queue 15

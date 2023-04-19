@@ -1,6 +1,10 @@
 import torch
+import util
+from torch.utils.data import DataLoader
+
 
 DATA_ROOT = "./dataset"
+
 
 def train(net, trainloader, valloader, epochs, device: str = "cpu"):
     """Train the network on the training set."""
@@ -90,20 +94,25 @@ def get_model_params(model):
     return [val.cpu().numpy() for _, val in model.state_dict().items()]
 
 
-# def main():
-#     DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-#     print("Centralized PyTorch training")
-#     print("Load data")
-#     trainloader, testloader, _ = load_data()
-#     net = Net().to(DEVICE)
-#     net.eval()
-#     print("Start training")
-#     train(net=net, trainloader=trainloader, epochs=2, device=DEVICE)
-#     print("Evaluate model")
-#     loss, accuracy = test(net=net, testloader=testloader, device=DEVICE)
-#     print("Loss: ", loss)
-#     print("Accuracy: ", accuracy)
+def main():
+    DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    print("Centralized PyTorch training")
+    print("Load data")
+    trainset, testset, _ = util.load_data()
+    n_valset = int(len(trainset) * 0.2)
+    valset = torch.utils.data.Subset(trainset, range(0, n_valset))
+    trainset = torch.utils.data.Subset(trainset, range(n_valset, len(trainset)))
+    trainloader = DataLoader(trainset, batch_size=16, shuffle=True)
+    testloader = DataLoader(testset, batch_size=16, shuffle=True)
+    valloader = DataLoader(valset, batch_size=16, shuffle=True)
+    model = load_efficientnet(classes=10)
+    print("Start training")
+    train(net=model, trainloader=trainloader, valloader=valloader, epochs=10, device=DEVICE)
+    print("Evaluate model")
+    loss, accuracy = test(net=model, testloader=testloader, device=DEVICE)
+    print("Loss: ", loss)
+    print("Accuracy: ", accuracy)
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()

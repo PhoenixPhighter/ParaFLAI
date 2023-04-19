@@ -45,7 +45,7 @@ class CifarClient(fl.client.NumPyClient):
         model.load_state_dict(state_dict, strict=True)
         return model
 
-    def fit(self, parameters, config):
+    def fit1(self, parameters, config):
         """Train parameters on the locally held training set."""
 
         # Update local model parameters

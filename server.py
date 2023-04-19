@@ -83,13 +83,13 @@ def main():
     # Create strategy
     strategy = fl.server.strategy.FedAvg(
         fraction_fit=1,
-        fraction_evaluate=0.2,
+        # fraction_evaluate=0.2,
         min_fit_clients=args.ncli,
-        min_evaluate_clients=2,
+        # min_evaluate_clients=2,
         min_available_clients=args.ncli,
-        evaluate_fn=get_evaluate_fn(model),
+        # evaluate_fn=get_evaluate_fn(model),
         on_fit_config_fn=fit_config,
-        on_evaluate_config_fn=evaluate_config,
+        # on_evaluate_config_fn=evaluate_config,
         initial_parameters=fl.common.ndarrays_to_parameters(model_parameters),
     )
 

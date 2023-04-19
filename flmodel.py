@@ -42,13 +42,16 @@ def test(net, testloader, steps: int = None, device: str = "cpu"):
     net.eval()
     with torch.no_grad():
         for batch_idx, (images, labels) in enumerate(testloader):
+            print("start loop")
             images, labels = images.to(device), labels.to(device)
             outputs = net(images)
             loss += criterion(outputs, labels).item()
             _, predicted = torch.max(outputs.data, 1)
             correct += (predicted == labels).sum().item()
+            print("calc correct")
             if steps is not None and batch_idx == steps:
                 break
+    print("finish loop")
     accuracy = correct / len(testloader.dataset)
     net.to("cpu")  # move model back to CPU
     return loss, accuracy

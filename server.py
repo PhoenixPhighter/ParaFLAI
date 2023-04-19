@@ -53,9 +53,11 @@ def get_evaluate_fn(model: torch.nn.Module):
         config: Dict[str, fl.common.Scalar],
     ) -> Optional[Tuple[float, Dict[str, fl.common.Scalar]]]:
         # Update model with the latest parameters
+        print('start eval')
         params_dict = zip(model.state_dict().keys(), parameters)
         state_dict = OrderedDict({k: torch.tensor(v) for k, v in params_dict})
         model.load_state_dict(state_dict, strict=True)
+        print('start test')
 
         loss, accuracy = flmodel.test(model, valLoader)
         return loss, {"accuracy": accuracy}
@@ -83,13 +85,13 @@ def main():
     # Create strategy
     strategy = fl.server.strategy.FedAvg(
         fraction_fit=1,
-        # fraction_evaluate=0.2,
+        fraction_evaluate=0.2,
         min_fit_clients=args.ncli,
-        # min_evaluate_clients=2,
+        min_evaluate_clients=2,
         min_available_clients=args.ncli,
-        # evaluate_fn=get_evaluate_fn(model),
+        evaluate_fn=get_evaluate_fn(model),
         on_fit_config_fn=fit_config,
-        # on_evaluate_config_fn=evaluate_config,
+        on_evaluate_config_fn=evaluate_config,
         initial_parameters=fl.common.ndarrays_to_parameters(model_parameters),
     )
 

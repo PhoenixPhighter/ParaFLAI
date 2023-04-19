@@ -97,13 +97,17 @@ def main() -> None:
         "--ncli", type=int, default=1, required=True, help="Number of clients"
     )
 
+    parser.add_argument(
+        "--ip", type=str, default="127.0.0.1", required=False, help="Server IP"
+    )
+
     args = parser.parse_args()
 
     # Load data
     trainset, testset = util.load_partition(args.id, args.ncli)
 
     client = CifarClient(trainset, testset, DEVICE)
-    fl.client.start_numpy_client(server_address="127.0.0.1:8080", client=client)
+    fl.client.start_numpy_client(server_address=f"{args.ip}:8080", client=client)
 
 
 if __name__ == "__main__":

@@ -9,8 +9,11 @@ import numpy as np
 import torch
 import torchvision
 from pathlib import Path
+import argparse
+from torch.utils.data import DataLoader
 
-import cifar
+import flmodel
+import util
 
 USE_FEDBN: bool = True
 
@@ -21,79 +24,86 @@ DEVICE: str = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 # Flower Client
 class CifarClient(fl.client.NumPyClient):
-    """Flower client implementing CIFAR-10 image classification using
-    PyTorch."""
-
     def __init__(
         self,
-        model: cifar.Net,
-        trainloader: torch.utils.data.DataLoader,
-        testloader: torch.utils.data.DataLoader,
-        num_examples: Dict,
-    ) -> None:
-        self.model = model
-        self.trainloader = trainloader
-        self.testloader = testloader
-        self.num_examples = num_examples
+        trainset: torchvision.datasets,
+        testset: torchvision.datasets,
+        device: str,
+        validation_split: int = 0.1,
+    ):
+        self.device = device
+        self.trainset = trainset
+        self.testset = testset
+        self.validation_split = validation_split
 
-    def get_parameters(self, config: Dict[str, str]) -> List[np.ndarray]:
-        self.model.train()
-        if USE_FEDBN:
-            # Return model parameters as a list of NumPy ndarrays, excluding parameters of BN layers when using FedBN
-            return [
-                val.cpu().numpy()
-                for name, val in self.model.state_dict().items()
-                if "bn" not in name
-            ]
-        else:
-            # Return model parameters as a list of NumPy ndarrays
-            return [val.cpu().numpy() for _, val in self.model.state_dict().items()]
+    def set_parameters(self, parameters):
+        """Loads a efficientnet model and replaces it parameters with the ones
+        given."""
+        model = flmodel.load_efficientnet(classes=10)
+        params_dict = zip(model.state_dict().keys(), parameters)
+        state_dict = OrderedDict({k: torch.tensor(v) for k, v in params_dict})
+        model.load_state_dict(state_dict, strict=True)
+        return model
 
-    def set_parameters(self, parameters: List[np.ndarray]) -> None:
-        # Set model parameters from a list of NumPy ndarrays
-        self.model.train()
-        if USE_FEDBN:
-            keys = [k for k in self.model.state_dict().keys() if "bn" not in k]
-            params_dict = zip(keys, parameters)
-            state_dict = OrderedDict({k: torch.tensor(v) for k, v in params_dict})
-            self.model.load_state_dict(state_dict, strict=False)
-        else:
-            params_dict = zip(self.model.state_dict().keys(), parameters)
-            state_dict = OrderedDict({k: torch.tensor(v) for k, v in params_dict})
-            self.model.load_state_dict(state_dict, strict=True)
+    def fit(self, parameters, config):
+        """Train parameters on the locally held training set."""
 
-    def fit(
-        self, parameters: List[np.ndarray], config: Dict[str, str]
-    ) -> Tuple[List[np.ndarray], int, Dict]:
-        # Set model parameters, train model, return updated model parameters
-        self.set_parameters(parameters)
-        cifar.train(self.model, self.trainloader, epochs=1, device=DEVICE)
-        return self.get_parameters(config={}), self.num_examples["trainset"], {}
+        # Update local model parameters
+        model = self.set_parameters(parameters)
 
-    def evaluate(
-        self, parameters: List[np.ndarray], config: Dict[str, str]
-    ) -> Tuple[float, int, Dict]:
-        # Set model parameters, evaluate model on local test dataset, return result
-        self.set_parameters(parameters)
-        loss, accuracy = cifar.test(self.model, self.testloader, device=DEVICE)
-        return float(loss), self.num_examples["testset"], {"accuracy": float(accuracy)}
+        # Get hyperparameters for this round
+        batch_size: int = config["batch_size"]
+        epochs: int = config["local_epochs"]
+
+        n_valset = int(len(self.trainset) * self.validation_split)
+
+        valset = torch.utils.data.Subset(self.trainset, range(0, n_valset))
+        trainset = torch.utils.data.Subset(
+            self.trainset, range(n_valset, len(self.trainset))
+        )
+
+        trainLoader = DataLoader(trainset, batch_size=batch_size, shuffle=True)
+        valLoader = DataLoader(valset, batch_size=batch_size)
+
+        results = flmodel.train(model, trainLoader, valLoader, epochs, self.device)
+
+        parameters_prime = flmodel.get_model_params(model)
+        num_examples_train = len(trainset)
+
+        return parameters_prime, num_examples_train, results
+
+    def evaluate(self, parameters, config):
+        """Evaluate parameters on the locally held test set."""
+        # Update local model parameters
+        model = self.set_parameters(parameters)
+
+        # Get config values
+        steps: int = config["val_steps"]
+
+        # Evaluate global model parameters on the local test data and return results
+        testloader = DataLoader(self.testset, batch_size=16)
+
+        loss, accuracy = flmodel.test(model, testloader, steps, self.device)
+        return float(loss), len(self.testset), {"accuracy": float(accuracy)}
 
 
 def main() -> None:
-    """Load data, start CifarClient."""
+    parser = argparse.ArgumentParser(description="Federated Learning Client")
+    parser.add_argument(
+        "--id", type=int, default=0, required=True, help="Participant ID"
+    )
+
+    parser.add_argument(
+        "--ncli", type=int, default=1, required=True, help="Number of clients"
+    )
+
+    args = parser.parse_args()
 
     # Load data
-    trainloader, testloader, num_examples = cifar.load_data()
+    trainset, testset = util.load_partition(args.id, args.ncli)
 
-    # Load model
-    model = cifar.Net().to(DEVICE).train()
-
-    # Perform a single forward pass to properly initialize BatchNorm
-    _ = model(next(iter(trainloader))[0].to(DEVICE))
-
-    # Start client
-    client = CifarClient(model, trainloader, testloader, num_examples)
-    fl.client.start_numpy_client(server_address="34.123.132.77:8080", client=client)
+    client = CifarClient(trainset, testset, DEVICE)
+    fl.client.start_numpy_client(server_address="127.0.0.1:8080", client=client)
 
 
 if __name__ == "__main__":

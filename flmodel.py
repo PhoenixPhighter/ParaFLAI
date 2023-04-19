@@ -16,13 +16,17 @@ def train(net, trainloader, valloader, epochs, device: str = "cpu"):
     )
     net.train()
     for i in range(epochs):
+        index = 0
         print(f"starting round {i}")
         for images, labels in trainloader:
+            if index % 100 == 0:
+                print(index)
             images, labels = images.to(device), labels.to(device)
             optimizer.zero_grad()
             loss = criterion(net(images), labels)
             loss.backward()
             optimizer.step()
+            index += 1
 
     net.to("cpu")  # move model back to CPU
 
@@ -47,13 +51,11 @@ def test(net, testloader, steps: int = None, device: str = "cpu"):
     net.eval()
     with torch.no_grad():
         for batch_idx, (images, labels) in enumerate(testloader):
-            print("start loop")
             images, labels = images.to(device), labels.to(device)
             outputs = net(images)
             loss += criterion(outputs, labels).item()
             _, predicted = torch.max(outputs.data, 1)
             correct += (predicted == labels).sum().item()
-            print("calc correct")
             if steps is not None and batch_idx == steps:
                 break
     print("finish loop")
@@ -97,6 +99,7 @@ def get_model_params(model):
 
 def main():
     DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    print(DEVICE)
     print("Centralized PyTorch training")
     print("Load data")
     trainset, testset, _ = util.load_data()

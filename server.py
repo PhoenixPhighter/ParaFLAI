@@ -50,7 +50,7 @@ def get_evaluate_fn(model: torch.nn.Module):
     def evaluate(
         server_round: int,
         parameters: fl.common.NDArrays,
-        cog: Dict[str, fl.common.Scalar],
+        config: Dict[str, fl.common.Scalar],
     ) -> Optional[Tuple[float, Dict[str, fl.common.Scalar]]]:
         # Update model with the latest parameters
         print('start eval')

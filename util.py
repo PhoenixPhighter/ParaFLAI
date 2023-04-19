@@ -4,8 +4,12 @@ from torchvision.datasets import CIFAR10
 
 DATA_ROOT = "./dataset"
 
+
 # Load CIFAR-10
 def load_data():
+    # transform = transforms.Compose(
+    #     [transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+    # )
     transform = transforms.Compose(
         [
             transforms.Resize(256),
@@ -20,6 +24,7 @@ def load_data():
 
     num_examples = {"trainset": len(trainset), "testset": len(testset)}
     return trainset, testset, num_examples
+
 
 # Partition Dataset
 def load_partition(idx: int, total: int):

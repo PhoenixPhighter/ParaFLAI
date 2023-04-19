@@ -15,7 +15,8 @@ def train(net, trainloader, valloader, epochs, device: str = "cpu"):
         net.parameters(), lr=0.1, momentum=0.9, weight_decay=1e-4
     )
     net.train()
-    for _ in range(epochs):
+    for i in range(epochs):
+        print(f"starting round {i}")
         for images, labels in trainloader:
             images, labels = images.to(device), labels.to(device)
             optimizer.zero_grad()

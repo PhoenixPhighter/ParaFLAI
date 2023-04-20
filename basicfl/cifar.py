@@ -86,8 +86,8 @@ def load_partition(idx: int, total: int):
     test_parition = torch.utils.data.Subset(
         testset, range(idx * n_test, (idx + 1) * n_test)
     )
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=32, shuffle=True)
-    testloader = torch.utils.data.DataLoader(testset, batch_size=32, shuffle=False)
+    trainloader = torch.utils.data.DataLoader(train_parition, batch_size=32, shuffle=True)
+    testloader = torch.utils.data.DataLoader(test_parition, batch_size=32, shuffle=False)
     num_examples = {"trainset": len(train_parition), "testset": len(test_parition)}
     return (trainloader, testloader, num_examples)
 

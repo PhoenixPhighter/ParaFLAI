@@ -1,6 +1,6 @@
 from typing import Dict, List, Optional, Tuple
 from collections import OrderedDict
-
+import argparse
 import torch
 import flwr as fl
 import cifar
@@ -48,15 +48,22 @@ def get_evaluate_fn(model):
 if __name__ == "__main__":
     model = cifar.Net().to(DEVICE)
 
+    parser = argparse.ArgumentParser(description="Federated Learning Client")
+    parser.add_argument(
+        "--ncli", type=int, default=1, required=True, help="Number of clients"
+    )
+
+    args = parser.parse_args()
+
     fl.server.start_server(
         server_address="0.0.0.0:8080",
         config=fl.server.ServerConfig(num_rounds=3),
         strategy=fl.server.strategy.FedAvg(
             fraction_fit=1,
             fraction_evaluate=0.2,
-            min_fit_clients=2,
+            min_fit_clients=args.ncli,
             min_evaluate_clients=2,
-            min_available_clients=2,
+            min_available_clients=args.ncli,
             evaluate_fn=get_evaluate_fn(model),
             # on_fit_config_fn=fit_config,
             on_evaluate_config_fn=evaluate_config,

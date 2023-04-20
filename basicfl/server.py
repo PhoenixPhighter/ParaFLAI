@@ -25,7 +25,7 @@ def get_evaluate_fn(model):
     """Return an evaluation function for server-side evaluation."""
 
     # Load data and model here to avoid the overhead of doing it in `evaluate` itself
-    _, testloader, _ = cifar.load_data()
+    _, testloader, _ = cifar.load_partition(0, 1)
 
     # The `evaluate` function will be called after every round
     def evaluate(
@@ -54,9 +54,9 @@ if __name__ == "__main__":
         strategy=fl.server.strategy.FedAvg(
             fraction_fit=1,
             fraction_evaluate=0.2,
-            min_fit_clients=10,
+            min_fit_clients=2,
             min_evaluate_clients=2,
-            min_available_clients=10,
+            min_available_clients=2,
             evaluate_fn=get_evaluate_fn(model),
             # on_fit_config_fn=fit_config,
             on_evaluate_config_fn=evaluate_config,

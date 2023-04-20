@@ -1,8 +1,5 @@
 #!/usr/bin/env /lusr/bin/python3.10
 
-"""Flower client example using PyTorch for CIFAR-10 image classification."""
-
-
 import os
 import sys
 import timeit
@@ -13,6 +10,8 @@ import flwr as fl
 import numpy as np
 import torch
 import torchvision
+import argparse
+
 
 import cifar
 
@@ -84,10 +83,18 @@ class CifarClient(fl.client.NumPyClient):
 
 
 def main() -> None:
-    """Load data, start CifarClient."""
-
-    # Load data
-    trainloader, testloader, num_examples = cifar.load_data()
+    parser = argparse.ArgumentParser(description="Federated Learning Client")
+    parser.add_argument(
+        "--id", type=int, default=0, required=True, help="Participant ID"
+    )
+    parser.add_argument(
+        "--ncli", type=int, default=1, required=True, help="Number of clients"
+    )
+    parser.add_argument(
+        "--ip", type=str, default="127.0.0.1", required=False, help="Server IP"
+    )
+    args = parser.parse_args()
+    trainloader, testloader, num_examples = cifar.load_partition(args.id, args.ncli)
 
     # Load model
     model = cifar.Net().to(DEVICE).train()
@@ -97,7 +104,7 @@ def main() -> None:
 
     # Start client
     client = CifarClient(model, trainloader, testloader, num_examples)
-    fl.client.start_numpy_client(server_address="34.66.196.174:8080", client=client)
+    fl.client.start_numpy_client(server_address=f"{args.ip}:8080", client=client)
 
 
 if __name__ == "__main__":

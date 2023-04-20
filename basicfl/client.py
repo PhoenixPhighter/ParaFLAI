@@ -1,3 +1,5 @@
+#!/usr/bin/env /lusr/bin/python3.10
+
 """Flower client example using PyTorch for CIFAR-10 image classification."""
 
 

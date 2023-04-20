@@ -53,11 +53,15 @@ if __name__ == "__main__":
         "--ncli", type=int, default=1, required=True, help="Number of clients"
     )
 
+    parser.add_argument(
+        "--epochs", type=int, default=1, required=True, help="Number of rounds to run"
+    )
+
     args = parser.parse_args()
 
     fl.server.start_server(
         server_address="0.0.0.0:8080",
-        config=fl.server.ServerConfig(num_rounds=2),
+        config=fl.server.ServerConfig(num_rounds=args.epochs),
         strategy=fl.server.strategy.FedAvg(
             fraction_fit=1,
             fraction_evaluate=0.2,

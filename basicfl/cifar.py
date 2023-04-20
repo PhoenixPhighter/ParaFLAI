@@ -11,6 +11,7 @@ https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
 
 from typing import Tuple, Dict
 
+import time
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -157,15 +158,18 @@ def main():
     DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("Centralized PyTorch training")
     print("Load data")
-    trainloader, testloader, _ = load_data()
+    trainloader, testloader, _ = load_partition(0, 1)
+    start = time.time()
     net = Net().to(DEVICE)
     net.eval()
     print("Start training")
-    train(net=net, trainloader=trainloader, epochs=2, device=DEVICE)
+    train(net=net, trainloader=trainloader, epochs=8, device=DEVICE)
     print("Evaluate model")
     loss, accuracy = test(net=net, testloader=testloader, device=DEVICE)
+    end = time.time()
     print("Loss: ", loss)
     print("Accuracy: ", accuracy)
+    print("Time: ", end - start)
 
 
 if __name__ == "__main__":

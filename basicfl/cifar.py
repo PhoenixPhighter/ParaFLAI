@@ -19,7 +19,7 @@ import torchvision.transforms as transforms
 from torch import Tensor
 from torchvision.datasets import CIFAR10
 
-DATA_ROOT = "../dataset"
+DATA_ROOT = "./dataset"
 
 
 # pylint: disable=unsubscriptable-object

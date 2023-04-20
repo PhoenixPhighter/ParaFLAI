@@ -50,13 +50,13 @@ if __name__ == "__main__":
 
     fl.server.start_server(
         server_address="0.0.0.0:8080",
-        config=fl.server.ServerConfig(num_rounds=20),
+        config=fl.server.ServerConfig(num_rounds=3),
         strategy=fl.server.strategy.FedAvg(
             fraction_fit=1,
             fraction_evaluate=0.2,
-            min_fit_clients=1,
-            min_evaluate_clients=1,
-            min_available_clients=1,
+            min_fit_clients=10,
+            min_evaluate_clients=2,
+            min_available_clients=10,
             evaluate_fn=get_evaluate_fn(model),
             # on_fit_config_fn=fit_config,
             on_evaluate_config_fn=evaluate_config,

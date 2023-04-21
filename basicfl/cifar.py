@@ -59,7 +59,7 @@ def load_data():
     #     ]
     # )
 
-    trainset = CIFARM10(DATA_ROOT, train=True, download=True, transform=transform)
+    trainset = CIFAR10(DATA_ROOT, train=True, download=True, transform=transform)
     testset = CIFAR10(DATA_ROOT, train=False, download=True, transform=transform)
 
     num_examples = {"trainset": len(trainset), "testset": len(testset)}

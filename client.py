@@ -39,8 +39,6 @@ class CifarClient(fl.client.NumPyClient):
         self.validation_split = validation_split
 
     def set_parameters(self, parameters):
-        """Loads a efficientnet model and replaces it parameters with the ones
-        given."""
         model = flmodel.load_efficientnet(classes=10)
         params_dict = zip(model.state_dict().keys(), parameters)
         state_dict = OrderedDict({k: torch.tensor(v) for k, v in params_dict})
@@ -48,8 +46,6 @@ class CifarClient(fl.client.NumPyClient):
         return model
 
     def fit(self, parameters, config):
-        """Train parameters on the locally held training set."""
-
         # Update local model parameters
         model = self.set_parameters(parameters)
 
@@ -75,7 +71,6 @@ class CifarClient(fl.client.NumPyClient):
         return parameters_prime, num_examples_train, results
 
     def evaluate(self, parameters, config):
-        """Evaluate parameters on the locally held test set."""
         # Update local model parameters
         model = self.set_parameters(parameters)
 

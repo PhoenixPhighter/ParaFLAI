@@ -12,18 +12,11 @@ DEVICE: str = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 def evaluate_config(server_round: int):
-    """Return evaluation configuration dict for each round.
-    Perform five local evaluation steps on each client (i.e., use five
-    batches) during rounds one to three, then increase to ten local
-    evaluation steps.
-    """
     val_steps = 5 if server_round < 4 else 10
     return {"val_steps": val_steps}
 
 
 def get_evaluate_fn(model):
-    """Return an evaluation function for server-side evaluation."""
-
     # Load data and model here to avoid the overhead of doing it in `evaluate` itself
     _, testloader, _ = cifar.load_partition(0, 1)
 

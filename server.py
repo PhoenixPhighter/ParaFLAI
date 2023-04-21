@@ -13,10 +13,6 @@ import warnings
 warnings.filterwarnings("ignore")
 
 def fit_config(server_round: int):
-    """Return training configuration dict for each round.
-    Keep batch size fixed at 32, perform two rounds of training with one
-    local epoch, increase to two local epochs afterwards.
-    """
     config = {
         "batch_size": 16,
         "local_epochs": 1 if server_round < 2 else 2,
@@ -25,18 +21,11 @@ def fit_config(server_round: int):
 
 
 def evaluate_config(server_round: int):
-    """Return evaluation configuration dict for each round.
-    Perform five local evaluation steps on each client (i.e., use five
-    batches) during rounds one to three, then increase to ten local
-    evaluation steps.
-    """
     val_steps = 5 if server_round < 4 else 10
     return {"val_steps": val_steps}
 
 
 def get_evaluate_fn(model: torch.nn.Module):
-    """Return an evaluation function for server-side evaluation."""
-
     # Load data and model here to avoid the overhead of doing it in `evaluate` itself
     trainset, _, _ = util.load_data()
 
@@ -66,11 +55,6 @@ def get_evaluate_fn(model: torch.nn.Module):
 
 
 def main():
-    """Load model for
-    1. server-side parameter initialization
-    2. server-side parameter evaluation
-    """
-
     # Parse command line argument `partition`
     parser = argparse.ArgumentParser(description="Federated Learning Client")
     parser.add_argument(

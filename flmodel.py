@@ -7,7 +7,6 @@ DATA_ROOT = "./dataset"
 
 
 def train(net, trainloader, valloader, epochs, device: str = "cpu"):
-    """Train the network on the training set."""
     print("Starting training...")
     net.to(device)  # move model to GPU if available
     criterion = torch.nn.CrossEntropyLoss().to(device)
@@ -43,7 +42,6 @@ def train(net, trainloader, valloader, epochs, device: str = "cpu"):
 
 
 def test(net, testloader, steps: int = None, device: str = "cpu"):
-    """Validate the network on the entire test set."""
     print("Starting evalutation...")
     net.to(device)  # move model to GPU if available
     criterion = torch.nn.CrossEntropyLoss()
@@ -71,18 +69,6 @@ def replace_classifying_layer(efficientnet_model, num_classes: int = 10):
 
 
 def load_efficientnet(entrypoint: str = "nvidia_efficientnet_b0", classes: int = None):
-    """Loads pretrained efficientnet model from torch hub. Replaces final
-    classifying layer if classes is specified.
-    Args:
-        entrypoint: EfficientNet model to download.
-                    For supported entrypoints, please refer
-                    https://pytorch.org/hub/nvidia_deeplearningexamples_efficientnet/
-        classes: Number of classes in final classifying layer. Leave as None to get the downloaded
-                 model untouched.
-    Returns:
-        EfficientNet Model
-    Note: One alternative implementation can be found at https://github.com/lukemelas/EfficientNet-PyTorch
-    """
     efficientnet = torch.hub.load(
         "NVIDIA/DeepLearningExamples:torchhub", entrypoint, pretrained=True
     )

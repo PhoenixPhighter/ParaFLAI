@@ -50,14 +50,6 @@ def load_data():
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
     )
-    # transform = transforms.Compose(
-    #     [
-    #         transforms.Resize(256),
-    #         transforms.CenterCrop(224),
-    #         transforms.ToTensor(),
-    #         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-    #     ]
-    # )
 
     trainset = CIFAR10(DATA_ROOT, train=True, download=True, transform=transform)
     testset = CIFAR10(DATA_ROOT, train=False, download=True, transform=transform)
@@ -92,7 +84,6 @@ def train(
     epochs: int,
     device: torch.device,  # pylint: disable=no-member
 ) -> None:
-    """Train the network."""
     # Define loss and optimizer
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
@@ -128,7 +119,6 @@ def test(
     testloader: torch.utils.data.DataLoader,
     device: torch.device,  # pylint: disable=no-member
 ) -> Tuple[float, float]:
-    """Validate the network on the entire test set."""
     # Define loss and metrics
     criterion = nn.CrossEntropyLoss()
     correct, loss = 0, 0.0
